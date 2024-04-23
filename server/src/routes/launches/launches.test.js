@@ -13,7 +13,7 @@ describe('Launches API',()=>{
         await mongoDisconnect()
     })
 
-        describe("test GET/launches", ()=>
+    describe("test GET/launches", ()=>
     {
         test('It should respond with 200 success', async ()=>{
             const response = await request(app)
@@ -36,6 +36,12 @@ describe('Launches API',()=>{
             mission:"USS Enterpise",
             rocket:"NCC 1071",
             target:"Kepler-62 f",
+        }
+        const launchDataWithInvalidDate = {
+            mission:"USS Enterpise",
+            rocket:"NCC 1071",
+            target:"Kepler-62 f",
+            launchDate: "zzzz",
         }
 
         test('it should respond with 200 success', async ()=>{
@@ -62,12 +68,7 @@ describe('Launches API',()=>{
                 error:'Missing required launch property'
             })
         })
-        const launchDataWithInvalidDate = {
-            mission:"USS Enterpise",
-            rocket:"NCC 1071",
-            target:"Kepler-62 f",
-            launchDate: "zzzz",
-        }
+        
         
         test('It should catch invalid date requests', async ()=>{
             const response = await request(app)
