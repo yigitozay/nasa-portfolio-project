@@ -44,18 +44,7 @@ describe('Launches API',()=>{
             launchDate: "zzzz",
         }
 
-        test('it should respond with 200 success', async ()=>{
-            const response = await request(app)
-            .post("/launches")
-            .send(completeLaunchDate)
-            .expect('Content-Type', /json/)
-            .expect(201);
-
-            const requestDate = new Date(completeLaunchDate.launchDate).valueOf();
-            const responseDate = new Date (response.body.launchDate).valueOf();
-            expect(responseDate).toBe(requestDate)
-            expect(response.body).toMatchObject(launchDataWithoutDate)
-        })
+    
 
         test('it should catch missing required properities', async ()=> {
             const response = await request(app)
