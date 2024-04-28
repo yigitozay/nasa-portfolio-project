@@ -11,6 +11,7 @@
     "client": "npm start --prefix client",
     "watch": "concurrently \"npm run server\" \"npm run client\"",
     "deploy": "npm run build --prefix client && npm start --prefix server",
+    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
     "test": "npm test --prefix server && npm test --prefix client"
   },
   "keywords": [],
@@ -22,6 +23,7 @@
   "dependencies": {
     "axios": "^1.6.8",
     "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "mongoose": "^8.3.2",
     "morgan": "^1.10.0"
